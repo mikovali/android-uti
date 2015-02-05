@@ -1,5 +1,6 @@
 package io.github.mikovali.android.util;
 
+import android.accounts.Account;
 import android.os.Parcel;
 
 import junit.framework.TestCase;
@@ -76,5 +77,32 @@ public class ParcelUtilTest extends TestCase {
         parcel.setDataPosition(0);
         assertEquals(null, ParcelUtil.readDouble(parcel));
         parcel.recycle();
+    }
+
+    // Parcelable
+
+    public void testWriteAndReadParcelable() {
+        final Account input = new Account("name", "type");
+
+        final Parcel parcel = Parcel.obtain();
+        ParcelUtil.writeParcelable(input, parcel, 0);
+        parcel.setDataPosition(0);
+        final Account output = ParcelUtil.readParcelable(Account.CREATOR, parcel);
+
+        assertNotSame(input, output);
+        assertEquals(input.name, output.name);
+        assertEquals(input.type, output.type);
+        parcel.recycle();
+    }
+
+    public void testWriteAndReadNullParcelable() {
+        final Account input = null;
+
+        final Parcel parcel = Parcel.obtain();
+        ParcelUtil.writeParcelable(input, parcel, 0);
+        parcel.setDataPosition(0);
+        final Account output = ParcelUtil.readParcelable(Account.CREATOR, parcel);
+
+        assertNull(output);
     }
 }

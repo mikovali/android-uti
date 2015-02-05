@@ -1,6 +1,7 @@
 package io.github.mikovali.android.util;
 
 import android.os.Parcel;
+import android.os.Parcelable;
 
 /**
  * Utility to make working with nullable values and parcels easier.
@@ -56,6 +57,18 @@ public final class ParcelUtil {
 
     public static Double readDouble(Parcel in) {
         return isNull(in) ? null : in.readDouble();
+    }
+
+    // Parcelable
+
+    public static <T extends Parcelable> void writeParcelable(T value, Parcel dest, int flags) {
+        if (!setNull(value, dest)) {
+            value.writeToParcel(dest, flags);
+        }
+    }
+
+    public static <T extends Parcelable> T readParcelable(Parcelable.Creator<T> creator, Parcel in) {
+        return isNull(in) ? null : creator.createFromParcel(in);
     }
 
     // helpers
