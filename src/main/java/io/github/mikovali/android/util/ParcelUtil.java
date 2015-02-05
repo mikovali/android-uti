@@ -22,4 +22,17 @@ public final class ParcelUtil {
     public static Integer readInteger(Parcel in) {
         return in.readInt() == NULL ? null : in.readInt();
     }
+
+    public static void writeLong(Long value, Parcel dest) {
+        if (value == null) {
+            dest.writeInt(NULL);
+        } else {
+            dest.writeInt(NOT_NULL);
+            dest.writeLong(value);
+        }
+    }
+
+    public static Long readLong(Parcel in) {
+        return in.readInt() == NULL ? null : in.readLong();
+    }
 }

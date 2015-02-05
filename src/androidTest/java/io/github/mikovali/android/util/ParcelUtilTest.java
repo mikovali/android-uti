@@ -23,4 +23,20 @@ public class ParcelUtilTest extends TestCase {
         assertEquals(null, ParcelUtil.readInteger(parcel));
         parcel.recycle();
     }
+
+    // Long
+
+    public void testWriteAndReadLong() {
+        final Parcel parcel = Parcel.obtain();
+        ParcelUtil.writeLong(3L, parcel);
+        parcel.setDataPosition(0);
+        assertEquals(Long.valueOf(3), ParcelUtil.readLong(parcel));
+    }
+
+    public void testWriteAndReadNullLong() {
+        final Parcel parcel = Parcel.obtain();
+        ParcelUtil.writeLong(null, parcel);
+        parcel.setDataPosition(0);
+        assertEquals(null, ParcelUtil.readLong(parcel));
+    }
 }
