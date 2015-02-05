@@ -31,6 +31,7 @@ public class ParcelUtilTest extends TestCase {
         ParcelUtil.writeLong(3L, parcel);
         parcel.setDataPosition(0);
         assertEquals(Long.valueOf(3), ParcelUtil.readLong(parcel));
+        parcel.recycle();
     }
 
     public void testWriteAndReadNullLong() {
@@ -38,5 +39,42 @@ public class ParcelUtilTest extends TestCase {
         ParcelUtil.writeLong(null, parcel);
         parcel.setDataPosition(0);
         assertEquals(null, ParcelUtil.readLong(parcel));
+        parcel.recycle();
+    }
+
+    // Float
+
+    public void testWriteAndReadFloat() {
+        final Parcel parcel = Parcel.obtain();
+        ParcelUtil.writeFloat(3.5f, parcel);
+        parcel.setDataPosition(0);
+        assertEquals(3.5f, ParcelUtil.readFloat(parcel));
+        parcel.recycle();
+    }
+
+    public void testWriteAndReadNullFloat() {
+        final Parcel parcel = Parcel.obtain();
+        ParcelUtil.writeFloat(null, parcel);
+        parcel.setDataPosition(0);
+        assertEquals(null, ParcelUtil.readFloat(parcel));
+        parcel.recycle();
+    }
+
+    // Double
+
+    public void testWriteAndReadDouble() {
+        final Parcel parcel = Parcel.obtain();
+        ParcelUtil.writeDouble(3.5, parcel);
+        parcel.setDataPosition(0);
+        assertEquals(3.5, ParcelUtil.readDouble(parcel));
+        parcel.recycle();
+    }
+
+    public void testWriteAndReadNullDouble() {
+        final Parcel parcel = Parcel.obtain();
+        ParcelUtil.writeDouble(null, parcel);
+        parcel.setDataPosition(0);
+        assertEquals(null, ParcelUtil.readDouble(parcel));
+        parcel.recycle();
     }
 }
