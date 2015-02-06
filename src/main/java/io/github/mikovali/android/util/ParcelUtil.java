@@ -67,7 +67,8 @@ public final class ParcelUtil {
         }
     }
 
-    public static <T extends Parcelable> T readParcelable(Parcelable.Creator<T> creator, Parcel in) {
+    public static <T extends Parcelable> T readParcelable(Parcelable.Creator<T> creator,
+                                                          Parcel in) {
         return isNull(in) ? null : creator.createFromParcel(in);
     }
 

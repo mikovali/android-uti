@@ -95,6 +95,7 @@ public class ParcelUtilTest extends TestCase {
         parcel.recycle();
     }
 
+    @SuppressWarnings("ConstantConditions")
     public void testWriteAndReadNullParcelable() {
         final Account input = null;
 
