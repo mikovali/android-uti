@@ -1,6 +1,12 @@
-# Android Util [![Build Status](https://travis-ci.org/mikovali/android-util.svg?branch=master)](https://travis-ci.org/mikovali/android-util)
+# Android Util [![Build Status](https://travis-ci.org/mikovali/android-util.svg?branch=develop)](https://travis-ci.org/mikovali/android-util)
 
 Useful Util classes for Android development.
+
+## Releasing checklist
+
+* Update VERSION_NAME in gradle.properties
+* Update branch parameter in README.md build status image URL
+* Update CHANGELOG.md
 
 ## License
 
