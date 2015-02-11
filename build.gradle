@@ -10,6 +10,11 @@ buildscript {
 
 apply plugin: 'com.android.library'
 
+dependencies {
+    compile "com.android.support:support-annotations:$ANDROID_SUPPORT_LIBRARY_VERSION"
+    compile "com.android.support:support-v4:$ANDROID_SUPPORT_LIBRARY_VERSION"
+}
+
 android {
     buildToolsVersion '21.1.2'
     compileSdkVersion 21
