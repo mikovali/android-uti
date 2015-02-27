@@ -4,15 +4,25 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.0.1'
+        classpath 'com.android.tools.build:gradle:1.1.0'
     }
 }
 
 apply plugin: 'com.android.library'
 
+repositories {
+    jcenter()
+}
+
 dependencies {
     compile "com.android.support:support-annotations:$ANDROID_SUPPORT_LIBRARY_VERSION"
     compile "com.android.support:support-v4:$ANDROID_SUPPORT_LIBRARY_VERSION"
+
+    testCompile 'junit:junit:4.12'
+    testCompile 'com.tngtech.java:junit-dataprovider:1.9.3'
+
+    // GsonUtil
+    compile 'com.google.code.gson:gson:2.3.1'
 }
 
 android {
