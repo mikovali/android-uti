@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class FragmentUtilTest extends ActivityInstrumentationTestCase2<FragmentUtilTest.Activity> {
 
     public static final Class<ParentInterface> TYPE = ParentInterface.class;
@@ -35,7 +37,7 @@ public class FragmentUtilTest extends ActivityInstrumentationTestCase2<FragmentU
     @UiThreadTest
     public void testGetParentAsOrderOfParents() {
         // ensure unattached fragment does not have parent
-        assertNull(FragmentUtil.getParentAs(fragment, TYPE));
+        assertThat(FragmentUtil.getParentAs(fragment, TYPE)).isNull();
 
         // attach fragment to activity which has implemented the interface,
         // parent will be the activity
@@ -43,7 +45,7 @@ public class FragmentUtilTest extends ActivityInstrumentationTestCase2<FragmentU
                 .replace(android.R.id.content, fragment)
                 .commit();
         fragmentManager.executePendingTransactions();
-        assertSame(activity, FragmentUtil.getParentAs(fragment, TYPE));
+        assertThat(FragmentUtil.getParentAs(fragment, TYPE)).isSameAs(activity);
 
         // grandparent fragment implements the interface, parent fragment doesn't,
         // parent will be grandparent fragment
@@ -63,7 +65,7 @@ public class FragmentUtilTest extends ActivityInstrumentationTestCase2<FragmentU
                 .replace(android.R.id.content, fragment)
                 .commit();
         fm.executePendingTransactions();
-        assertSame(grandparentFragment, FragmentUtil.getParentAs(fragment, TYPE));
+        assertThat(FragmentUtil.getParentAs(fragment, TYPE)).isSameAs(grandparentFragment);
 
         // parent fragment now implements the interface,
         // parent will be parent fragment
@@ -78,13 +80,13 @@ public class FragmentUtilTest extends ActivityInstrumentationTestCase2<FragmentU
                 .replace(android.R.id.content, fragment)
                 .commit();
         fm.executePendingTransactions();
-        assertSame(parentFragment, FragmentUtil.getParentAs(fragment, TYPE));
+        assertThat(FragmentUtil.getParentAs(fragment, TYPE)).isSameAs(parentFragment);
 
         // set target fragment as implementing the interface,
         // parent will be target fragment
         final Fragment targetFragment = new FragmentWithParentInterface();
         fragment.setTargetFragment(targetFragment, 0);
-        assertSame(targetFragment, FragmentUtil.getParentAs(fragment, TYPE));
+        assertThat(FragmentUtil.getParentAs(fragment, TYPE)).isSameAs(targetFragment);
     }
 
     public static class Activity extends FragmentActivity implements ParentInterface {

@@ -7,6 +7,8 @@ import android.support.v4.app.FragmentManager;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.UiThreadTest;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 /**
  * Separate class because needs to have separate activity which does not implement the interface.
  */
@@ -29,7 +31,7 @@ public class FragmentUtilGetParentAsNullTest
 
     @UiThreadTest
     public void testGetParentAsApplicationAndNull() {
-        assertNull(FragmentUtil.getParentAs(fragment, FragmentUtilTest.TYPE));
+        assertThat(FragmentUtil.getParentAs(fragment, FragmentUtilTest.TYPE)).isNull();
 
         // attach fragment to activity which has NOT implemented the interface,
         // parent will be null
@@ -37,12 +39,12 @@ public class FragmentUtilGetParentAsNullTest
                 .replace(android.R.id.content, fragment)
                 .commit();
         fragmentManager.executePendingTransactions();
-        assertNull(FragmentUtil.getParentAs(fragment, FragmentUtilTest.TYPE));
+        assertThat(FragmentUtil.getParentAs(fragment, FragmentUtilTest.TYPE)).isNull();
 
         // search for Application type instead,
         // parent will be application
-        assertEquals(getActivity().getApplication(),
-                FragmentUtil.getParentAs(fragment, Application.class));
+        assertThat(FragmentUtil.getParentAs(fragment, Application.class))
+                .isSameAs(getActivity().getApplication());
     }
 
     public static class Activity extends FragmentActivity {

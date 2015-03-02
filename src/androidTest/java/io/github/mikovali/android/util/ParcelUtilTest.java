@@ -5,6 +5,8 @@ import android.os.Parcel;
 
 import junit.framework.TestCase;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class ParcelUtilTest extends TestCase {
 
     // Integer
@@ -13,7 +15,9 @@ public class ParcelUtilTest extends TestCase {
         final Parcel parcel = Parcel.obtain();
         ParcelUtil.writeInteger(3, parcel);
         parcel.setDataPosition(0);
-        assertEquals(Integer.valueOf(3), ParcelUtil.readInteger(parcel));
+
+        assertThat(ParcelUtil.readInteger(parcel)).isEqualTo(3);
+
         parcel.recycle();
     }
 
@@ -21,7 +25,9 @@ public class ParcelUtilTest extends TestCase {
         final Parcel parcel = Parcel.obtain();
         ParcelUtil.writeInteger(null, parcel);
         parcel.setDataPosition(0);
-        assertEquals(null, ParcelUtil.readInteger(parcel));
+
+        assertThat(ParcelUtil.readInteger(parcel)).isNull();
+
         parcel.recycle();
     }
 
@@ -31,7 +37,9 @@ public class ParcelUtilTest extends TestCase {
         final Parcel parcel = Parcel.obtain();
         ParcelUtil.writeLong(3L, parcel);
         parcel.setDataPosition(0);
-        assertEquals(Long.valueOf(3), ParcelUtil.readLong(parcel));
+
+        assertThat(ParcelUtil.readLong(parcel)).isEqualTo(3L);
+
         parcel.recycle();
     }
 
@@ -39,7 +47,9 @@ public class ParcelUtilTest extends TestCase {
         final Parcel parcel = Parcel.obtain();
         ParcelUtil.writeLong(null, parcel);
         parcel.setDataPosition(0);
-        assertEquals(null, ParcelUtil.readLong(parcel));
+
+        assertThat(ParcelUtil.readLong(parcel)).isNull();
+
         parcel.recycle();
     }
 
@@ -49,7 +59,9 @@ public class ParcelUtilTest extends TestCase {
         final Parcel parcel = Parcel.obtain();
         ParcelUtil.writeFloat(3.5f, parcel);
         parcel.setDataPosition(0);
-        assertEquals(3.5f, ParcelUtil.readFloat(parcel));
+
+        assertThat(ParcelUtil.readFloat(parcel)).isEqualTo(3.5f);
+
         parcel.recycle();
     }
 
@@ -57,7 +69,9 @@ public class ParcelUtilTest extends TestCase {
         final Parcel parcel = Parcel.obtain();
         ParcelUtil.writeFloat(null, parcel);
         parcel.setDataPosition(0);
-        assertEquals(null, ParcelUtil.readFloat(parcel));
+
+        assertThat(ParcelUtil.readFloat(parcel)).isNull();
+
         parcel.recycle();
     }
 
@@ -67,7 +81,9 @@ public class ParcelUtilTest extends TestCase {
         final Parcel parcel = Parcel.obtain();
         ParcelUtil.writeDouble(3.5, parcel);
         parcel.setDataPosition(0);
-        assertEquals(3.5, ParcelUtil.readDouble(parcel));
+
+        assertThat(ParcelUtil.readDouble(parcel)).isEqualTo(3.5);
+
         parcel.recycle();
     }
 
@@ -75,7 +91,9 @@ public class ParcelUtilTest extends TestCase {
         final Parcel parcel = Parcel.obtain();
         ParcelUtil.writeDouble(null, parcel);
         parcel.setDataPosition(0);
-        assertEquals(null, ParcelUtil.readDouble(parcel));
+
+        assertThat(ParcelUtil.readDouble(parcel)).isNull();
+
         parcel.recycle();
     }
 
@@ -87,23 +105,25 @@ public class ParcelUtilTest extends TestCase {
         final Parcel parcel = Parcel.obtain();
         ParcelUtil.writeParcelable(input, parcel, 0);
         parcel.setDataPosition(0);
+
         final Account output = ParcelUtil.readParcelable(Account.CREATOR, parcel);
 
-        assertNotSame(input, output);
-        assertEquals(input.name, output.name);
-        assertEquals(input.type, output.type);
+        assertThat(output).isNotSameAs(input);
+        assertThat(output.name).isEqualTo(input.name);
+        assertThat(output.type).isEqualTo(input.type);
+
         parcel.recycle();
     }
 
     @SuppressWarnings("ConstantConditions")
     public void testWriteAndReadNullParcelable() {
         final Account input = null;
-
         final Parcel parcel = Parcel.obtain();
         ParcelUtil.writeParcelable(input, parcel, 0);
         parcel.setDataPosition(0);
-        final Account output = ParcelUtil.readParcelable(Account.CREATOR, parcel);
 
-        assertNull(output);
+        assertThat(ParcelUtil.readParcelable(Account.CREATOR, parcel)).isNull();
+
+        parcel.recycle();
     }
 }

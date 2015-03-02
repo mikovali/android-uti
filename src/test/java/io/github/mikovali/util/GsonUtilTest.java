@@ -15,8 +15,7 @@ import org.junit.runner.RunWith;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.nullValue;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * TODO valid tests
@@ -30,7 +29,7 @@ public class GsonUtilTest {
 
     @Test
     public void getAsIntegerWhereMemberDoesNotExist() {
-        assertThat(GsonUtil.getAsInteger(new JsonObject(), MEMBER), nullValue());
+        assertThat(GsonUtil.getAsInteger(new JsonObject(), MEMBER)).isNull();
     }
 
     @Test
@@ -39,14 +38,14 @@ public class GsonUtilTest {
         final JsonObject object = new JsonObject();
         object.add(MEMBER, member);
 
-        assertThat(GsonUtil.getAsInteger(object, MEMBER), nullValue());
+        assertThat(GsonUtil.getAsInteger(object, MEMBER)).isNull();
     }
 
     // Long
 
     @Test
     public void getAsLongWhereMemberDoesNotExist() {
-        assertThat(GsonUtil.getAsLong(new JsonObject(), MEMBER), nullValue());
+        assertThat(GsonUtil.getAsLong(new JsonObject(), MEMBER)).isNull();
     }
 
     @Test
@@ -55,14 +54,14 @@ public class GsonUtilTest {
         final JsonObject object = new JsonObject();
         object.add(MEMBER, member);
 
-        assertThat(GsonUtil.getAsLong(object, MEMBER), nullValue());
+        assertThat(GsonUtil.getAsLong(object, MEMBER)).isNull();
     }
 
     // Short
 
     @Test
     public void getAsShortWhereMemberDoesNotExist() {
-        assertThat(GsonUtil.getAsShort(new JsonObject(), MEMBER), nullValue());
+        assertThat(GsonUtil.getAsShort(new JsonObject(), MEMBER)).isNull();
     }
 
     @Test
@@ -71,14 +70,14 @@ public class GsonUtilTest {
         final JsonObject object = new JsonObject();
         object.add(MEMBER, member);
 
-        assertThat(GsonUtil.getAsShort(object, MEMBER), nullValue());
+        assertThat(GsonUtil.getAsShort(object, MEMBER)).isNull();
     }
 
     // Float
 
     @Test
     public void getAsFloatWhereMemberDoesNotExist() {
-        assertThat(GsonUtil.getAsFloat(new JsonObject(), MEMBER), nullValue());
+        assertThat(GsonUtil.getAsFloat(new JsonObject(), MEMBER)).isNull();
     }
 
     @Test
@@ -87,14 +86,14 @@ public class GsonUtilTest {
         final JsonObject object = new JsonObject();
         object.add(MEMBER, member);
 
-        assertThat(GsonUtil.getAsFloat(object, MEMBER), nullValue());
+        assertThat(GsonUtil.getAsFloat(object, MEMBER)).isNull();
     }
 
     // Double
 
     @Test
     public void getAsDoubleWhereMemberDoesNotExist() {
-        assertThat(GsonUtil.getAsDouble(new JsonObject(), MEMBER), nullValue());
+        assertThat(GsonUtil.getAsDouble(new JsonObject(), MEMBER)).isNull();
     }
 
     @Test
@@ -103,14 +102,14 @@ public class GsonUtilTest {
         final JsonObject object = new JsonObject();
         object.add(MEMBER, member);
 
-        assertThat(GsonUtil.getAsDouble(object, MEMBER), nullValue());
+        assertThat(GsonUtil.getAsDouble(object, MEMBER)).isNull();
     }
 
     // Byte
 
     @Test
     public void getAsByteWhereMemberDoesNotExist() {
-        assertThat(GsonUtil.getAsByte(new JsonObject(), MEMBER), nullValue());
+        assertThat(GsonUtil.getAsByte(new JsonObject(), MEMBER)).isNull();
     }
 
     @Test
@@ -119,14 +118,14 @@ public class GsonUtilTest {
         final JsonObject object = new JsonObject();
         object.add(MEMBER, member);
 
-        assertThat(GsonUtil.getAsByte(object, MEMBER), nullValue());
+        assertThat(GsonUtil.getAsByte(object, MEMBER)).isNull();
     }
 
     // Number
 
     @Test
     public void getAsNumberWhereMemberDoesNotExist() {
-        assertThat(GsonUtil.getAsNumber(new JsonObject(), MEMBER), nullValue());
+        assertThat(GsonUtil.getAsNumber(new JsonObject(), MEMBER)).isNull();
     }
 
     @Test
@@ -135,14 +134,14 @@ public class GsonUtilTest {
         final JsonObject object = new JsonObject();
         object.add(MEMBER, member);
 
-        assertThat(GsonUtil.getAsNumber(object, MEMBER), nullValue());
+        assertThat(GsonUtil.getAsNumber(object, MEMBER)).isNull();
     }
 
     // Boolean
 
     @Test
     public void getAsBooleanWhereMemberDoesNotExist() {
-        assertThat(GsonUtil.getAsBoolean(new JsonObject(), MEMBER), nullValue());
+        assertThat(GsonUtil.getAsBoolean(new JsonObject(), MEMBER)).isNull();
     }
 
     @Test
@@ -151,14 +150,14 @@ public class GsonUtilTest {
         final JsonObject object = new JsonObject();
         object.add(MEMBER, member);
 
-        assertThat(GsonUtil.getAsBoolean(object, MEMBER), nullValue());
+        assertThat(GsonUtil.getAsBoolean(object, MEMBER)).isNull();
     }
 
     // Character
 
     @Test
     public void getAsCharacterWhereMemberDoesNotExist() {
-        assertThat(GsonUtil.getAsCharacter(new JsonObject(), MEMBER), nullValue());
+        assertThat(GsonUtil.getAsCharacter(new JsonObject(), MEMBER)).isNull();
     }
 
     @Test
@@ -167,14 +166,14 @@ public class GsonUtilTest {
         final JsonObject object = new JsonObject();
         object.add(MEMBER, member);
 
-        assertThat(GsonUtil.getAsCharacter(object, MEMBER), nullValue());
+        assertThat(GsonUtil.getAsCharacter(object, MEMBER)).isNull();
     }
 
     // String
 
     @Test
     public void getAsStringWhereMemberDoesNotExist() {
-        assertThat(GsonUtil.getAsString(new JsonObject(), MEMBER), nullValue());
+        assertThat(GsonUtil.getAsString(new JsonObject(), MEMBER)).isNull();
     }
 
     @Test
@@ -183,14 +182,14 @@ public class GsonUtilTest {
         final JsonObject object = new JsonObject();
         object.add(MEMBER, member);
 
-        assertThat(GsonUtil.getAsString(object, MEMBER), nullValue());
+        assertThat(GsonUtil.getAsString(object, MEMBER)).isNull();
     }
 
     // JsonPrimitive
 
     @Test
     public void getAsJsonPrimitiveWhereMemberDoesNotExist() {
-        assertThat(GsonUtil.getAsJsonPrimitive(new JsonObject(), MEMBER), nullValue());
+        assertThat(GsonUtil.getAsJsonPrimitive(new JsonObject(), MEMBER)).isNull();
     }
 
     @Test
@@ -199,14 +198,14 @@ public class GsonUtilTest {
         final JsonObject object = new JsonObject();
         object.add(MEMBER, member);
 
-        assertThat(GsonUtil.getAsJsonPrimitive(object, MEMBER), nullValue());
+        assertThat(GsonUtil.getAsJsonPrimitive(object, MEMBER)).isNull();
     }
 
     // JsonNull
 
     @Test
     public void getAsJsonNullWhereMemberDoesNotExist() {
-        assertThat(GsonUtil.getAsJsonNull(new JsonObject(), MEMBER), nullValue());
+        assertThat(GsonUtil.getAsJsonNull(new JsonObject(), MEMBER)).isNull();
     }
 
     @Test
@@ -215,14 +214,14 @@ public class GsonUtilTest {
         final JsonObject object = new JsonObject();
         object.add(MEMBER, member);
 
-        assertThat(GsonUtil.getAsJsonNull(object, MEMBER), nullValue());
+        assertThat(GsonUtil.getAsJsonNull(object, MEMBER)).isNull();
     }
 
     // JsonArray
 
     @Test
     public void getAsJsonArrayWhereMemberDoesNotExist() {
-        assertThat(GsonUtil.getAsJsonArray(new JsonObject(), MEMBER), nullValue());
+        assertThat(GsonUtil.getAsJsonArray(new JsonObject(), MEMBER)).isNull();
     }
 
     @Test
@@ -231,14 +230,14 @@ public class GsonUtilTest {
         final JsonObject object = new JsonObject();
         object.add(MEMBER, member);
 
-        assertThat(GsonUtil.getAsJsonArray(object, MEMBER), nullValue());
+        assertThat(GsonUtil.getAsJsonArray(object, MEMBER)).isNull();
     }
 
     // JsonObject
 
     @Test
     public void getAsJsonObjectWhereMemberDoesNotExist() {
-        assertThat(GsonUtil.getAsJsonObject(new JsonObject(), MEMBER), nullValue());
+        assertThat(GsonUtil.getAsJsonObject(new JsonObject(), MEMBER)).isNull();
     }
 
     @Test
@@ -247,7 +246,7 @@ public class GsonUtilTest {
         final JsonObject object = new JsonObject();
         object.add(MEMBER, member);
 
-        assertThat(GsonUtil.getAsJsonObject(object, MEMBER), nullValue());
+        assertThat(GsonUtil.getAsJsonObject(object, MEMBER)).isNull();
     }
 
     // providers
