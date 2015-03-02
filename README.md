@@ -1,4 +1,4 @@
-# Android Util [![Build Status](https://travis-ci.org/mikovali/android-util.svg?branch=v1.2.0)](https://travis-ci.org/mikovali/android-util)
+# Android Util [![Build Status](https://travis-ci.org/mikovali/android-util.svg?branch=develop)](https://travis-ci.org/mikovali/android-util)
 
 Useful Util classes for Android development.
 
