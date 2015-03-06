@@ -18,13 +18,16 @@ dependencies {
     compile "com.android.support:support-annotations:$ANDROID_SUPPORT_LIBRARY_VERSION"
     compile "com.android.support:support-v4:$ANDROID_SUPPORT_LIBRARY_VERSION"
 
+    // GsonUtil
+    compile 'com.google.code.gson:gson:2.3.1'
+
     testCompile 'junit:junit:4.12'
     testCompile 'com.tngtech.java:junit-dataprovider:1.9.3'
     testCompile 'org.assertj:assertj-core:1.7.1'
-    androidTestCompile 'org.assertj:assertj-core:1.7.1'
 
-    // GsonUtil
-    compile 'com.google.code.gson:gson:2.3.1'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.0'
+    androidTestCompile 'com.tngtech.java:junit-dataprovider:1.9.3'
+    androidTestCompile 'org.assertj:assertj-core:1.7.1'
 }
 
 android {
@@ -34,11 +37,17 @@ android {
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 21
+
+        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
         targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    packagingOptions {
+        exclude 'LICENSE.txt'
     }
 }
 

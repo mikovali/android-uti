@@ -2,16 +2,20 @@ package io.github.mikovali.android.util;
 
 import android.accounts.Account;
 import android.os.Parcel;
+import android.support.test.runner.AndroidJUnit4;
 
-import junit.framework.TestCase;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ParcelUtilTest extends TestCase {
+@RunWith(AndroidJUnit4.class)
+public class ParcelUtilTest {
 
     // Integer
 
-    public void testWriteAndReadInteger() {
+    @Test
+    public void writeAndReadInteger() {
         final Parcel parcel = Parcel.obtain();
         ParcelUtil.writeInteger(3, parcel);
         parcel.setDataPosition(0);
@@ -21,7 +25,8 @@ public class ParcelUtilTest extends TestCase {
         parcel.recycle();
     }
 
-    public void testWriteAndReadNullInteger() {
+    @Test
+    public void writeAndReadNullInteger() {
         final Parcel parcel = Parcel.obtain();
         ParcelUtil.writeInteger(null, parcel);
         parcel.setDataPosition(0);
@@ -33,7 +38,8 @@ public class ParcelUtilTest extends TestCase {
 
     // Long
 
-    public void testWriteAndReadLong() {
+    @Test
+    public void writeAndReadLong() {
         final Parcel parcel = Parcel.obtain();
         ParcelUtil.writeLong(3L, parcel);
         parcel.setDataPosition(0);
@@ -43,7 +49,8 @@ public class ParcelUtilTest extends TestCase {
         parcel.recycle();
     }
 
-    public void testWriteAndReadNullLong() {
+    @Test
+    public void writeAndReadNullLong() {
         final Parcel parcel = Parcel.obtain();
         ParcelUtil.writeLong(null, parcel);
         parcel.setDataPosition(0);
@@ -55,7 +62,8 @@ public class ParcelUtilTest extends TestCase {
 
     // Float
 
-    public void testWriteAndReadFloat() {
+    @Test
+    public void writeAndReadFloat() {
         final Parcel parcel = Parcel.obtain();
         ParcelUtil.writeFloat(3.5f, parcel);
         parcel.setDataPosition(0);
@@ -65,7 +73,8 @@ public class ParcelUtilTest extends TestCase {
         parcel.recycle();
     }
 
-    public void testWriteAndReadNullFloat() {
+    @Test
+    public void writeAndReadNullFloat() {
         final Parcel parcel = Parcel.obtain();
         ParcelUtil.writeFloat(null, parcel);
         parcel.setDataPosition(0);
@@ -77,7 +86,8 @@ public class ParcelUtilTest extends TestCase {
 
     // Double
 
-    public void testWriteAndReadDouble() {
+    @Test
+    public void writeAndReadDouble() {
         final Parcel parcel = Parcel.obtain();
         ParcelUtil.writeDouble(3.5, parcel);
         parcel.setDataPosition(0);
@@ -87,7 +97,8 @@ public class ParcelUtilTest extends TestCase {
         parcel.recycle();
     }
 
-    public void testWriteAndReadNullDouble() {
+    @Test
+    public void writeAndReadNullDouble() {
         final Parcel parcel = Parcel.obtain();
         ParcelUtil.writeDouble(null, parcel);
         parcel.setDataPosition(0);
@@ -99,7 +110,8 @@ public class ParcelUtilTest extends TestCase {
 
     // Parcelable
 
-    public void testWriteAndReadParcelable() {
+    @Test
+    public void writeAndReadParcelable() {
         final Account input = new Account("name", "type");
 
         final Parcel parcel = Parcel.obtain();
@@ -115,8 +127,9 @@ public class ParcelUtilTest extends TestCase {
         parcel.recycle();
     }
 
+    @Test
     @SuppressWarnings("ConstantConditions")
-    public void testWriteAndReadNullParcelable() {
+    public void writeAndReadNullParcelable() {
         final Account input = null;
         final Parcel parcel = Parcel.obtain();
         ParcelUtil.writeParcelable(input, parcel, 0);
