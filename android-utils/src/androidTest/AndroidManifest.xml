@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="io.github.mikovali.android.utils">
+    <application>
+        <activity android:name=".FragmentUtilsTest$Activity" />
+        <activity android:name=".FragmentUtilsTest$ParentActivity" />
+        <activity android:name=".FragmentUtilsTest$ParentFragmentActivity" />
+    </application>
+</manifest>
