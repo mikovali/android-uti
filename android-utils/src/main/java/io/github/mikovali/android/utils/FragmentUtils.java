@@ -4,9 +4,6 @@ import android.app.Application;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 
-/**
- * TODO figure out best way of testing
- */
 public class FragmentUtils {
 
     /**
@@ -51,12 +48,11 @@ public class FragmentUtils {
             parent = parent.getParentFragment();
         }
 
-        if (!fragment.isAdded()) {
-            return null;
-        }
-
         // check activity
         final FragmentActivity activity = fragment.getActivity();
+        if (activity == null) {
+            return null;
+        }
         if (type.isInstance(activity)) {
             return (T) activity;
         }

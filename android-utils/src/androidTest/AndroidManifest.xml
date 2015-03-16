@@ -4,6 +4,7 @@
     <application>
         <activity android:name=".FragmentUtilsTest$Activity" />
         <activity android:name=".FragmentUtilsTest$ParentActivity" />
+        <activity android:name=".FragmentUtilsTest$GrandParentFragmentActivity" />
         <activity android:name=".FragmentUtilsTest$ParentFragmentActivity" />
     </application>
 </manifest>
